@@ -1,0 +1,40 @@
+<p>
+  <mat-toolbar
+    class="mr-auto"
+    color="primary"
+    *ngIf="nav.navbarVisible && currentUser"
+  >
+    <!-- //*ngIf="isLoggedIn$ | async as isLoggedIn" -->
+    <a routerLink="home" class="text-white p-1 m-1"> Home </a>
+    <a routerLink="registeredUsers" class="text-white p-1 m-1">
+      Registered users
+    </a>
+    <a routerLink="employeelist" class="text-white p-1 m-1"> Employeelist </a>
+    <div class="col-9">
+      <button
+        mat-button
+        (click)="logout()"
+        *ngIf="currentUser"
+        class="text-white float-right"
+      >
+        Logout
+      </button>
+
+      <a routerLink="login" *ngIf="!currentUser" class="text-white float-right">
+        &nbsp;Login &nbsp;</a
+      >
+    </div>
+  </mat-toolbar>
+</p>
+
+<div>
+  <mat-toolbar class="mr-auto" color="primary" *ngIf="!currentUser">
+    <div class="col-5">Employee Management Project</div>
+    <div class="col-9 row">
+      <button routerLink="/register" mat-button>Register</button>
+    </div>
+  </mat-toolbar>
+</div>
+<!-- <h1>Hi {{ currentUser.email }}</h1> -->
+<router-outlet></router-outlet>
+<!-- <a routerLink="login" class="text-white float-right"> &nbsp;Logout </a> -->

@@ -1,0 +1,17 @@
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\bin\Debug\net5.0\Application.dll
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\bin\Debug\net5.0\Domain.dll
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\bin\Debug\net5.0\Application.pdb
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\bin\Debug\net5.0\Domain.pdb
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
+C:\Users\ym247\Desktop\Application\CleanApplication\src\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb

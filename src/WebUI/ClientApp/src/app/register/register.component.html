@@ -1,0 +1,143 @@
+<!-- registration.component.html -->
+<form [formGroup]="registrationForm">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Name"
+      name="Name"
+      formControlName="name"
+      [(ngModel)]="registrationForm.name"
+      required
+  /></mat-form-field>
+  <mat-error
+    *ngIf="
+      registrationForm.controls.name.invalid &&
+      registrationForm.controls.name.touched
+    "
+  >
+    Please enter your name.
+  </mat-error>
+  <br />
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Email"
+      name="email"
+      (input)="onEmailInput($event)"
+      [(ngModel)]="registrationForm.email"
+      formControlName="email"
+      required
+  /></mat-form-field>
+  <mat-error
+    *ngIf="
+      registrationForm.controls.email.invalid &&
+      registrationForm.controls.email.touched
+    "
+  >
+    Please enter a valid email address.
+  </mat-error>
+  <br />
+
+  <mat-form-field>
+    <input
+      matInput
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="registrationForm.password"
+      name="password"
+      formControlName="password"
+      required
+  /></mat-form-field>
+  <mat-error
+    *ngIf="
+      registrationForm.controls.password.invalid &&
+      registrationForm.controls.password.touched
+    "
+  >
+    Password must contain at least one special character, one number, one
+    uppercase letter, one lowercase letter, and be 6 to 50 characters long.
+  </mat-error>
+  <br />
+
+  <mat-form-field>
+    <input
+      matInput
+      type="password"
+      placeholder="Confirm Password"
+      name="confirmPassword"
+      [(ngModel)]="registrationForm.confirmPassword"
+      formControlName="confirmPassword"
+      required
+    />
+  </mat-form-field>
+  <mat-error
+    *ngIf="
+      registrationForm.controls.confirmPassword.invalid &&
+      registrationForm.controls.confirmPassword.touched
+    "
+  >
+    Passwords do not match.
+  </mat-error>
+  <br />
+
+  <mat-form-field>
+    <input
+      matInput
+      name="phoneNo"
+      placeholder="Phone Number"
+      [(ngModel)]="registrationForm.phoneNo"
+      formControlName="phoneNo"
+      (keypress)="validatePhoneNumber($event)"
+  /></mat-form-field>
+  <mat-error
+    *ngIf="
+      registrationForm.controls.phoneNo.invalid &&
+      registrationForm.controls.phoneNo.touched
+    "
+  >
+    Please enter a valid phone number.
+  </mat-error>
+  <br />
+
+  <mat-form-field>
+    <textarea
+      matInput
+      placeholder="Address"
+      [(ngModel)]="registrationForm.address"
+      name="address"
+      formControlName="address"
+      required
+    ></textarea>
+  </mat-form-field>
+  <mat-error
+    *ngIf="
+      registrationForm.controls.address.invalid &&
+      registrationForm.controls.address.touched
+    "
+  >
+    Please enter your address. </mat-error
+  ><br />
+  <mat-form-field>
+    <mat-label>Select A Role</mat-label>
+    <mat-select
+      name="rolesId"
+      formControlName="rolesId"
+      [(ngModel)]="registrationForm.rolesId"
+    >
+      <mat-option *ngFor="let role of rolesData" [value]="role.id">
+        {{ role.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="registrationForm.invalid"
+    (click)="Register()"
+  >
+    Register
+  </button>
+</form>

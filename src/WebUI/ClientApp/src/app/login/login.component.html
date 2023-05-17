@@ -1,0 +1,59 @@
+<form [formGroup]="loginForm" class="text-center" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill" class="form-group">
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="email"
+      [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+    />
+
+    <mat-error
+      *ngIf="
+        loginForm.controls.email.touched &&
+        loginForm.controls.email.errors?.required
+      "
+    >
+      Email is required
+    </mat-error>
+    <mat-error
+      *ngIf="
+        loginForm.controls.email.touched &&
+        loginForm.controls.email.errors?.email
+      "
+    >
+      Invalid email format
+    </mat-error> </mat-form-field
+  ><br />
+
+  <mat-form-field appearance="fill" class="form-group">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      type="password"
+      formControlName="password"
+      [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+    />
+    <mat-error *ngIf="submitted && f.password.errors">
+      <span *ngIf="f.password.errors.required">Password is required</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-error *ngIf="errorMessage">
+    <p class="text-danger">{{ errorMessage }}</p>
+  </mat-error>
+  
+  <div class="form-group">
+    <button
+      mat-raised-button
+      [disabled]="loading"
+      [disabled]="loginForm.invalid"
+    >
+      <span
+        *ngIf="loading"
+        class="spinner-border spinner-border-sm mr-1"
+      ></span>
+      Login
+    </button>
+   
+  </div>
+</form>
