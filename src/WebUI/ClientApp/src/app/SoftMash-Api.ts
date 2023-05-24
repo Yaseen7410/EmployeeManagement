@@ -421,6 +421,7 @@ export class EmployeeClient implements IEmployeeClient {
 
 export interface IRegisterClient {
     registerQuery(request: GetRegisterQuery): Observable<GridResultOfRegisterDTO>;
+    registerQuerybyId(request: GetByIdRegister): Observable<RegisterDTO>;
 }
 
 @Injectable({
@@ -486,6 +487,58 @@ export class RegisterClient implements IRegisterClient {
             }));
         }
         return _observableOf<GridResultOfRegisterDTO>(<any>null);
+    }
+
+    registerQuerybyId(request: GetByIdRegister): Observable<RegisterDTO> {
+        let url_ = this.baseUrl + "/api/Register/registerQuerybyId";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(request);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processRegisterQuerybyId(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processRegisterQuerybyId(<any>response_);
+                } catch (e) {
+                    return <Observable<RegisterDTO>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<RegisterDTO>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processRegisterQuerybyId(response: HttpResponseBase): Observable<RegisterDTO> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = RegisterDTO.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<RegisterDTO>(<any>null);
     }
 }
 
@@ -1214,6 +1267,42 @@ export class GetRegisterQuery extends GridQuery implements IGetRegisterQuery {
 }
 
 export interface IGetRegisterQuery extends IGridQuery {
+}
+
+export class GetByIdRegister implements IGetByIdRegister {
+    regId?: number;
+
+    constructor(data?: IGetByIdRegister) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.regId = _data["regId"];
+        }
+    }
+
+    static fromJS(data: any): GetByIdRegister {
+        data = typeof data === 'object' ? data : {};
+        let result = new GetByIdRegister();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["regId"] = this.regId;
+        return data; 
+    }
+}
+
+export interface IGetByIdRegister {
+    regId?: number;
 }
 
 export class GridResultOfRolesDTO implements IGridResultOfRolesDTO {

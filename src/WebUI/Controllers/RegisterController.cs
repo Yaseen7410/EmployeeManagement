@@ -19,5 +19,10 @@ namespace WebUI.Controllers
         {
             return await Mediator.Send(request);
         }
+        [HttpPost("[action]")]
+        public async Task<ActionResult<RegisterDTO>> registerQuerybyId(GetByIdRegister request)
+        {
+            return await Mediator.Send(request);
+        }
     }
 }

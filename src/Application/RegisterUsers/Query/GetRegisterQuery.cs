@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using RegisterDTO = Application.UserAccount.Registration.RegisterDTO;
 
 namespace Application.RegisterUsers.Query
 {

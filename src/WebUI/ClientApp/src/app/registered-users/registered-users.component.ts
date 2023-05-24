@@ -21,7 +21,7 @@ export class RegisteredUsersComponent implements OnInit {
     ascending: true,
     sort: 'CreatedOn',
   };
-  displayedColumns: string[] = ['name', 'email', 'address', 'phoneNo'];
+  displayedColumns: string[] = ['name', 'email', 'address', 'phoneNo','Actions'];
   getAll(): void {
     this.get.registerQuery(this.query).subscribe((response) => {
       debugger;

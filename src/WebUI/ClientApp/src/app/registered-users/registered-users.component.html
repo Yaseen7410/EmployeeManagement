@@ -22,8 +22,15 @@
       <th mat-header-cell *matHeaderCellDef>Email</th>
       <td mat-cell *matCellDef="let employee">{{ employee.email }}</td>
     </ng-container>
-    <ng-container matColumnDef="actions">
+    <ng-container matColumnDef="Actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let employee">
+        <a [routerLink]="['/register', employee.id]">
+          <mat-icon>edit</mat-icon>
+        </a>
+        <mat-icon>edit</mat-icon>
+      </a>
+      </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

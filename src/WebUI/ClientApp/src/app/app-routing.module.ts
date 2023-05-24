@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'registeredUsers', component: RegisteredUsersComponent },
   { path: 'verifyEmail/:id', component: VerifyEmailComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'register/:id', component: RegisterComponent },
   {
     path: 'employeelist',
     component: EmployeelistComponent,

@@ -262,6 +262,38 @@
         }
       }
     },
+    "/api/Register/registerQuerybyId": {
+      "post": {
+        "tags": [
+          "Register"
+        ],
+        "operationId": "Register_registerQuerybyId",
+        "requestBody": {
+          "x-name": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetByIdRegister"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Roles/RolesQuery": {
       "post": {
         "tags": [
@@ -591,6 +623,16 @@
             "additionalProperties": false
           }
         ]
+      },
+      "GetByIdRegister": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "regId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
       },
       "GridResultOfRolesDTO": {
         "type": "object",
